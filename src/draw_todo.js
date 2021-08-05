@@ -1,49 +1,58 @@
+import { newToDo } from "./todo";
+
 const drawToDoForm = () => {
   const main = document.getElementById("main");
   const formWrapper = document.createElement("div");
-  const taskTitle = document.createElement("input");
-  const taskDescription = document.createElement("input");
-  const taskDueDate = document.createElement("input");
+  const formTitle = document.createElement("input");
+  const formDescription = document.createElement("input");
+  const formDueDate = document.createElement("input");
   const addTaskBtn = document.createElement("button");
   const deleteTaskBtn = document.createElement("button");
 
   formWrapper.classList.add("form-wrapper");
-  taskTitle.setAttribute("id", "task-title");
-  taskDescription.setAttribute("id", "task-note");
-  taskDueDate.setAttribute("id", "task-date");
+  formTitle.setAttribute("id", "form-title");
+  formDescription.setAttribute("id", "form-note");
+  formDueDate.setAttribute("id", "form-date");
   addTaskBtn.setAttribute("id", "add-task-btn");
   deleteTaskBtn.setAttribute("id", "delete-task-btn");
 
-  taskTitle.placeholder = "Title";
-  taskDescription.placeholder = "Quick Note:";
-  taskDueDate.type = "date";
+  formTitle.placeholder = "Title";
+  formDescription.placeholder = "Quick Note:";
+  formDueDate.type = "date";
   addTaskBtn.textContent = "Add";
   deleteTaskBtn.textContent = "Delete";
 
   formWrapper.append(
-    taskTitle,
-    taskDueDate,
-    taskDescription,
+    formTitle,
+    formDueDate,
+    formDescription,
     addTaskBtn,
     deleteTaskBtn
   );
   main.append(formWrapper);
-
-  drawTask(taskTitle.textContent, taskDescription.textContent);
 
   return main;
 };
 
 const setFormActive = () => {
   const addTaskIcon = document.getElementById("plus-icon");
+  const formWrapper = document.querySelector(".form-wrapper");
+
   addTaskIcon.addEventListener("click", () => {
-    document.querySelector(".form-wrapper").classList.toggle("active");
+    formWrapper.classList.toggle("active");
+    // hides tasks already created.
   });
 };
 
 const drawTask = () => {
-  document.getElementById("add-task-btn").addEventListener("click", () => {
-    document.querySelector(".form-wrapper").classList.remove("active");
+  const addTaskBtn = document.getElementById("add-task-btn");
+  const formWrapper = document.querySelector(".form-wrapper");
+  const task = document.getElementById("task");
+  addTaskBtn.addEventListener("click", () => {
+    formWrapper.classList.remove("active");
+    // not sure how this works?
+    task.classList.remove("disabled");
+    newToDo();
   });
 };
 

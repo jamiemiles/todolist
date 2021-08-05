@@ -4,7 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Do This</title>
-    <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <script
@@ -31,6 +30,13 @@
             <button>Add Task</button>
           </div>
         </nav>
+        <section id="task" class="disabled">
+          <i class="far fa-circle"></i>
+          <h4 id="task-title"></h4>
+          <p class="description"></p>
+          <i class="fas fa-arrow-down"></i>
+          <i class="fas fa-times"></i>
+        </section>
       </main>
       <footer id="footer">
         <p>Copyright © 2021 Jamie Miles</p>
@@ -39,5 +45,6 @@
         ></a>
       </footer>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>

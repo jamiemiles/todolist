@@ -1,15 +1,19 @@
-const createToDo = (title, description, dueDate, urgency) => {
-  const listOfToDos = [];
+import { drawToDoForm } from "./draw_todo";
 
+function toDoObj(title, description) {
   return {
     title,
     description,
-    dueDate,
-    urgency,
   };
+}
+
+const newToDo = () => {
+  let title = document.getElementById("form-title").value;
+  let description = document.getElementById("form-note").value;
+  const taskTitle = document.getElementById("task-title");
+  taskTitle.textContent = title;
+
+  toDoObj(title, description);
 };
 
-// let test = createToDo("test", "testing 1 2 3", "tomo", "urgent");
-// console.log(test);
-
-export { createToDo };
+export { toDoObj, newToDo };
