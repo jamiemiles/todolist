@@ -1,4 +1,4 @@
-import { newToDo, displayToDos } from "./todo";
+import { displayToDos, toDoObj } from "./todo";
 
 const drawToDoForm = () => {
   const main = document.getElementById("main");
@@ -43,49 +43,52 @@ const setFormActive = () => {
   });
 };
 
-const drawTask = (newTask) => {
+const drawTask = () => {
   const main = document.getElementById("main");
+  const taskContainer = document.querySelector(".task-container");
   const section = document.createElement("section");
   const h4 = document.createElement("h4");
   const p = document.createElement("p");
   const circleIcon = document.createElement("i");
   const crossIcon = document.createElement("i");
   const downArrow = document.createElement("i");
-  const taskTitle = document.getElementById("task-title");
-  const taskDescription = document.querySelector(".description");
+  const formTitle = document.getElementById("form-title").value;
+  const formNote = document.getElementById("form-note").value;
 
-  taskTitle.textContent = newTask.title;
-  taskDescription.textContent = newTsak.description;
   section.setAttribute("id", "task");
-  section.classList.add("disabled");
-
+  section.setAttribute("data-attribute", `${displayToDos.length}`);
   h4.setAttribute("id", "task-title");
-  p.classList.add("description");
+  p.setAttribute("id", "task-note");
   circleIcon.classList.add("far");
   circleIcon.classList.add("fa-circle");
   downArrow.classList.add("fas");
   downArrow.classList.add("fa-arrow-down");
-
   crossIcon.classList.add("fas");
   crossIcon.classList.add("fa-times");
 
+  h4.textContent = formTitle;
+  p.textContent = formNote;
+
   section.append(circleIcon, h4, p, downArrow, crossIcon);
-  main.append(section);
+  taskContainer.append(section);
 };
 
-const callDrawing = () => {
+const displayTask = () => {
   const addTaskBtn = document.getElementById("add-task-btn");
   const formWrapper = document.querySelector(".form-wrapper");
-  const section = document.getElementById("task");
+
   addTaskBtn.addEventListener("click", (e) => {
-    section.setAttribute("data-attribute", `${displayToDos.length}`);
+    const formTitle = document.getElementById("form-title").value;
+    const formNote = document.getElementById("form-note").value;
+    const taskTitle = document.getElementById("task-title");
+    const taskNote = document.getElementById("task-note");
     formWrapper.classList.remove("active");
-    task.classList.remove("disabled");
-    // e.preventDefault();
-    const newTask = newToDo();
+
+    const newTask = toDoObj(formTitle, formNote);
+
     displayToDos.push(newTask);
-    drawTask(newTask);
+    drawTask();
   });
 };
 
-export { drawToDoForm, setFormActive, callDrawing, drawTask };
+export { drawToDoForm, setFormActive, displayTask, drawTask };
