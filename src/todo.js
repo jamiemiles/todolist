@@ -1,19 +1,19 @@
-import { drawToDoForm } from "./draw_todo";
+const displayToDos = [];
 
 function toDoObj(title, description) {
   return {
     title,
     description,
+    completed: false,
   };
 }
 
 const newToDo = () => {
   let title = document.getElementById("form-title").value;
   let description = document.getElementById("form-note").value;
-  const taskTitle = document.getElementById("task-title");
-  taskTitle.textContent = title;
 
   toDoObj(title, description);
+  return { title, description };
 };
 
-export { toDoObj, newToDo };
+export { toDoObj, newToDo, displayToDos };

@@ -1,9 +1,10 @@
-import { drawToDoForm } from "./draw_todo";
+import { callDrawing, drawToDoForm } from "./draw_todo";
 import { drawTask } from "./draw_todo";
 import { setFormActive } from "./draw_todo";
 import { toDoObj } from "./todo";
 
 drawToDoForm();
+callDrawing();
 drawTask();
 setFormActive();
 toDoObj();
